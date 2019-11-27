@@ -1,0 +1,23 @@
+<html>
+        <% include header.ejs %>
+    <center>
+        <br>
+        <h1>Welcome to everyone's personal details</h1>
+        <table>
+            <tr>
+                <th> Name </th>
+                <th> RegNo </th>
+                <th> address </th>
+                </th>
+            </tr>
+                <% results.forEach(function(item){ %>
+                <tr>
+                    <td><%= item.name %></td>
+                    <td><%= item.RegNo %></td>
+                    <td><%= item.address %></td>
+                </tr>       
+                <% }) %>
+        </table>
+    </center>
+    <% include footer.ejs %>
+</html>

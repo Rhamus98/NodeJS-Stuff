@@ -1,0 +1,13 @@
+<html>
+    <center> TimesTable of <b> <%= T %></br> and the range <b> <%= R %></b>
+        <br>
+        Select the range please
+        <br>
+        <%
+            for(var i=1; i<=R; i++){
+                %>
+                <%= T %> x <%=i %> = <%= T*i %> <br>
+                <%
+            }
+                %>
+</html>

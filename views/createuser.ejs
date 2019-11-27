@@ -1,0 +1,23 @@
+<html>
+        <% include header.ejs %>
+    <form action="/createuser" method="POST"> 
+        <h2>Create User:</h2>
+        Username
+        <input type="text" name="username"><br>
+        Password
+        <input type="password" name="password"><br>
+        Name
+        <input type="text" name="name"><br>
+        <div>
+        Role
+       <select name="role">
+           <option value="1"> Admin</option>
+           <option value="2"> User</option>
+       </select>
+    </div>
+       <br>
+        <input type="submit" name="submit"><br>
+
+    </form>
+    <% include footer.ejs %>
+</html>

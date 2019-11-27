@@ -1,0 +1,8 @@
+var express=require("express")
+var app=express()
+var session=require('express-session')
+
+app.use("/", function(req,res){
+    console.log("abc")
+})
+app.listen(8000)

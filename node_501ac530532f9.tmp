@@ -1,0 +1,45 @@
+var express=require("express")
+var app=express()
+var session=require('express-session')
+var mysql = require("mysql");
+var bodyparser=require("body-parser")
+var dbf=require("./dbConnection")
+var con=dbf()
+
+app.set('view engine','ejs')
+
+app.use(bodyparser.json())
+app.use(bodyparser.urlencoded({extended: true}))
+
+
+
+app.get("/", function(req,res){
+    res.write(`<a href='/login'> Login </a>`)
+    res.write(`<a href='/createuser'> Create User </a>`)
+    res.end()
+})
+app.get("/login", function(req,res){
+    res.render("login.ejs")
+})
+app.get("/createuser", function(req,res){
+    res.render("createuser.ejs")
+})
+app.post("/login", function(req,res){
+    var username=req.body.username
+    var password=req.body.password
+    var query=`select * from users where username='${username}' and password='${password}'`
+    con.query(query,function(error,result,fields){
+        if(error){
+            console.log(error)
+        }
+        else{
+            if(result.length>0){
+                 res.render("showrecords.ejs")
+             }
+             else{
+                 res.render("createuser.ejs")
+             }
+        }
+    })
+})
+app.listen(8000)

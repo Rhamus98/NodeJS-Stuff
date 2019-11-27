@@ -1,0 +1,18 @@
+ var express=require("express")
+var app=express()
+app.set('view engine','ejs')
+
+app.get("/", function(req,res){
+    res.render("index1.ejs")
+})
+app.get("/range/:t", function(req,res){
+    res.render("range", {'T':req.params.t})
+})
+app.get("/timestable/:t/:r", function(req,res){
+    res.render("timestable.ejs",
+    {
+        'T':req.params.t,
+        'R':req.params.r
+    })                                                                                                                                                                          
+})
+app.listen(8000)

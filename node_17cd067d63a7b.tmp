@@ -1,0 +1,25 @@
+var express=require("express")
+var app=express()
+
+app.get("/", function(req,res){
+    res.writeHead(200,{"content-type":"text/html"})
+    for(var i=1; i<=10; i++){
+        res.write(`<a href='/generateTimesTable/${i}'> The ${i} Times Table </a>`)
+        res.write("<br>")
+    }
+})
+function TimesTable(t, response){
+    response.write("Times table of " + t)
+    response.write("<br>")
+    for(j=1; j<=10; j++){
+        response.write(t +"X"+j +"="+(j*t))
+        response.write("<br>")
+    }
+    response.end()
+}
+app.get("/generateTimesTable/:t", function(req,res){
+    res.writeHead(200,{"content-type":"text/html"})
+    var table=req.params.t
+    TimesTable(table,res)
+})
+app.listen(8000)
